@@ -7,7 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = (env, argv) => {
     return ({
         stats: 'minimal', // Keep console output easy to read.
-        entry: './src/index.js', // Your program entry point
+        entry: './src/js/index.js', // Your program entry point
 
         // Your build destination
         output: {
