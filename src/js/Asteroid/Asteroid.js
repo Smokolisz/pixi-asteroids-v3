@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import app from '../app/app';
+import getRandomInt from '../helpers/getRandomInt';
 
 class Asteroid
 {
@@ -27,6 +28,26 @@ class Asteroid
         this.sprite.y += this.velocityY * delta;
 
         this.sprite.rotation += this.rotationSpeed * delta;
+    }
+
+    static createRandomAsteroid()
+    {
+        let x = app.screen.width + 100;
+        let y = getRandomInt(0, app.screen.height);
+
+        let vX = getRandomInt(-100, -400)/100;
+        let vY = getRandomInt(-100, 100)/100;
+
+        let asteroid = new this(x, y, vX, vY, .1, .01);
+        
+        return asteroid;
+    }
+
+    destroy()
+    {
+        this.sprite.visible = false;
+        app.stage.removeChild(this.sprite);
+        this.sprite = null;
     }
 }
 
