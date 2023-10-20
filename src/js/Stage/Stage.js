@@ -10,7 +10,7 @@ class Stage
         this.player = null;
         this.levelConfig = levelConfig;
         this.asteroids = [];
-        this.aasteroidsArrivalDelay = levelConfig.asteroidsBegginingArrivalDelay;
+        this.asteroidsArrivalDelay = levelConfig.asteroidsBegginingArrivalDelay;
     }
 
     init()
@@ -46,12 +46,12 @@ class Stage
             this.addAsteroid();
             this.handleAsteroids();
 
-            this.aasteroidsArrivalDelay -= this.levelConfig.asteroidsDelayReducer;
-            if(this.aasteroidsArrivalDelay < this.levelConfig.asteroidsArrivalMinimumDelay) {
-                this.aasteroidsArrivalDelay = this.levelConfig.asteroidsArrivalMinimumDelay;
+            this.asteroidsArrivalDelay -= this.levelConfig.asteroidsDelayReducer;
+            if(this.asteroidsArrivalDelay < this.levelConfig.asteroidsArrivalMinimumDelay) {
+                this.asteroidsArrivalDelay = this.levelConfig.asteroidsArrivalMinimumDelay;
             }
 
-        }, this.aasteroidsArrivalDelay);
+        }, this.asteroidsArrivalDelay);
     }
 }
 
