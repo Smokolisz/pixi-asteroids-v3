@@ -3,40 +3,18 @@ import Player from './Player/Player';
 import app from './app/app';
 import Asteroid from './Asteroid/Asteroid';
 import getRandomInt from './helpers/getRandomInt';
+import Stage from './Stage/Stage';
+import stages from './Stage/stages.json';
 
-let player = new Player();
+const stage = new Stage(stages[0]);
+stage.init();
 
 
-let asteroids = [];
-for(let i=0; i<5;i++) {
-
-    createAsteroid()
-}
-
-// Listen for animate update
-app.ticker.add((delta) =>
+function testCollision()
 {
-    player.control();
-    player.move(delta);
-
-    for(let i=0; i < asteroids.length; i++) {
-        asteroids[i].move(delta);
+    for(let i=0;i<asteroids.length;i++)
+    {
+        let collision = player.sprite.getBounds().intersects(asteroids[i].sprite.getBounds());
+        console.log(collision, player.sprite.getBounds());
     }
 });
-
-setInterval(() => {
-    createAsteroid();
-}, 200);
-
-function createAsteroid()
-{
-    let x = app.screen.width + 100;
-    let y = getRandomInt(0, app.screen.height);
-
-    let vX = getRandomInt(-100, -400)/100;
-    let vY = getRandomInt(-100, 100)/100;
-    let scale = getRandomInt(10, 17)/100;
-
-    let asteroid = new Asteroid(x, y, vX, vY, scale, .01);
-    asteroids.push(asteroid);
-}
