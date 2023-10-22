@@ -17,4 +17,4 @@ function testCollision()
         let collision = player.sprite.getBounds().intersects(asteroids[i].sprite.getBounds());
         console.log(collision, player.sprite.getBounds());
     }
-});
+}
