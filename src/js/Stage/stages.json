@@ -1,0 +1,8 @@
+[
+    {
+        "totalAsteroidsCount": 1000,
+        "asteroidsDelayReducer": 5,
+        "asteroidsBegginingArrivalDelay": 1000,
+        "asteroidsArrivalMinimumDelay": 100
+    }
+]
