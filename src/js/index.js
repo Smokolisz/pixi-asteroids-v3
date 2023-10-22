@@ -35,7 +35,8 @@ function createAsteroid()
 
     let vX = getRandomInt(-100, -400)/100;
     let vY = getRandomInt(-100, 100)/100;
+    let scale = getRandomInt(10, 17)/100;
 
-    let asteroid = new Asteroid(x, y, vX, vY, .1, .01);
+    let asteroid = new Asteroid(x, y, vX, vY, scale, .01);
     asteroids.push(asteroid);
 }

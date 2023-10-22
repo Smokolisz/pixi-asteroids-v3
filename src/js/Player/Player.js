@@ -7,9 +7,11 @@ class Player
 {
     constructor()
     {
-        this.sprite = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+        this.sprite = PIXI.Sprite.from('hero.png');
 
         this.sprite.anchor.set(0.5);
+        this.sprite.zIndex = 99;
+        this.sprite.zOrder = 99;
 
         this.sprite.x = 100;
         this.sprite.y = app.screen.height / 2;
@@ -62,7 +64,7 @@ class Player
         if(this.velocityX == 0, this.velocityY == 0) {
             this.stops = true;
         }
-        this.flameTrail.animate(this.accelerating, this.stops);
+        this.flameTrail.animate(this.velocityX, this.velocityY, delta, this.accelerating, this.stops);
     }
 
     dontMoveOutOfBounds() {
@@ -103,7 +105,7 @@ class Player
 
     get speed()
     {
-        return .5;
+        return .1;
     }
 
     isAccelerating()

@@ -28,6 +28,13 @@ class Asteroid
 
         this.sprite.rotation += this.rotationSpeed * delta;
     }
+
+    delete()
+    {
+        this.sprite.visible = false;
+        app.stage.removeChild(this.sprite);
+        this.sprite = null;
+    }
 }
 
 export default Asteroid;
