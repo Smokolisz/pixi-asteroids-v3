@@ -1,5 +1,5 @@
-import * as PIXI from 'pixi.js'
-import app from '../app/app';
+import * as PIXI from 'pixi.js';
+import { app, asteroidsContainer } from '../app/app';
 import getRandomInt from '../helpers/getRandomInt';
 
 class Asteroid
@@ -14,7 +14,7 @@ class Asteroid
         this.sprite.x = x;
         this.sprite.y = y;
 
-        app.stage.addChild(this.sprite);
+        asteroidsContainer.addChild(this.sprite);
 
         this.velocityX = vX;
         this.velocityY = vY;
@@ -46,7 +46,7 @@ class Asteroid
     destroy()
     {
         this.sprite.visible = false;
-        app.stage.removeChild(this.sprite);
+        asteroidsContainer.removeChild(this.sprite);
         this.sprite = null;
     }
 }

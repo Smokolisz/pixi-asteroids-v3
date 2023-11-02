@@ -1,22 +1,21 @@
-import * as PIXI from 'pixi.js'
-import app from '../app/app';
+import * as PIXI from 'pixi.js';
+import { app, playersContainer } from '../app/app';
 import keyboard from '../helpers/keyboard';
 import FlameTrail from '../FlameTrail/FlameTrail';
+import Hearts from './Hearts/Hearts';
 
 class Player
 {
-    constructor()
+    constructor(heartsAmount)
     {
         this.sprite = PIXI.Sprite.from('hero.png');
 
         this.sprite.anchor.set(0.5);
-        this.sprite.zIndex = 99;
-        this.sprite.zOrder = 99;
 
         this.sprite.x = 100;
         this.sprite.y = app.screen.height / 2;
 
-        app.stage.addChild(this.sprite);
+        playersContainer.addChild(this.sprite);
 
         this.velocityX = 0;
         this.velocityY = 0;
@@ -25,6 +24,8 @@ class Player
         this.stops = true;
 
         this.flameTrail = new FlameTrail(this.sprite);
+
+        this.hearts = new Hearts(heartsAmount);
     }
 
     control()

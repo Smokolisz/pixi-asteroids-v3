@@ -27,7 +27,7 @@ class FlameTrail
             return;
         }
 
-        if(this.flameDelay > 2) {
+        if(this.flameDelay > 1) {
             this.addFlameParticle(vx, vy);
             this.flameDelay = 0;
         }
@@ -53,7 +53,7 @@ class FlameTrail
         const angleInRadians = Math.atan2(vy, vx);
         const angleInDegrees = -(angleInRadians * 180) / Math.PI;
 
-        let flameParticle = new FlameParticle(this.parentSprite.x-vx*2, this.parentSprite.y-vy*2, angleInDegrees);
+        let flameParticle = new FlameParticle(this.parentSprite.x, this.parentSprite.y, angleInDegrees);
         this.flames.push(flameParticle);
     }
 }
