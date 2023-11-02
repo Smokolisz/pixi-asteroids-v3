@@ -1,14 +1,25 @@
-import * as PIXI from 'pixi.js'
-import app from "../app/app";
+import * as PIXI from 'pixi.js';
+import { particleContainer } from "../app/app";
 
 class FlameParticle
 {
     constructor(x, y, angle)
     {
+        const space = -10;
+
+        const radians = angle * (Math.PI / 180);
+
+        const spaceX = space * Math.cos(radians);
+        const spaceY = -space * Math.sin(radians);
+
+        const newX = x + spaceX;
+        const newY = y + spaceY;;
+
+
         this.sprite = PIXI.Sprite.from("flameParticle.png");
         this.sprite.anchor.set(0.5);
-        this.sprite.x = x;
-        this.sprite.y = y;
+        this.sprite.x = newX;
+        this.sprite.y = newY;
         this.sprite.rotation = angle;
         this.sprite.tint = 0xFF0000;
         this.sprite.zIndex = -1;
@@ -20,7 +31,7 @@ class FlameParticle
         this.targetColor = 0xFFFF00;
         this.startColor = this.sprite.tint;
 
-        app.stage.addChild(this.sprite);
+        particleContainer.addChild(this.sprite);
     }
 
     move(delta)
@@ -44,7 +55,7 @@ class FlameParticle
     }
 
     get speed() {
-        return .05;
+        return .01;
     }
 
     lerpColor(startColor, endColor, progress) {
@@ -71,7 +82,7 @@ class FlameParticle
     delete()
     {
         this.sprite.visible = false;
-        app.stage.removeChild(this.sprite);
+        particleContainer.removeChild(this.sprite);
         this.sprite = null;
     }
 }
